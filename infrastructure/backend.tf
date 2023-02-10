@@ -1,3 +1,15 @@
+terraform {
+  required_providers {
+    aws = {
+
+    }
+
+    random = {
+      source = "hashicorp/random"
+    }
+  }
+}
+
 provider "aws" {
   region  = var.aws_region
   profile = var.aws_profile
@@ -9,3 +21,15 @@ provider "aws" {
     }
   }
 }
+
+provider "random" {
+
+}
+
+locals {
+  project_name = "IAMRoles"
+}
+
+data "aws_region" "current" {}
+
+data "aws_caller_identity" "current" {}
